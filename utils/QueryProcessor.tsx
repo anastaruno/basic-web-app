@@ -19,11 +19,18 @@ export default function QueryProcessor(query: string): string {
   }
 
   const MultMatch = query.match(/What is (\d+) multiplied by (\d+)/);
-  if (addMatch) {
-    const x: number = parseInt(addMatch[1]);
-    const y: number = parseInt(addMatch[2]);
+  if (MultMatch) {
+    const x: number = parseInt(MultMatch[1]);
+    const y: number = parseInt(MultMatch[2]);
     return (x*y).toString();
   }
-  
+
+  const MinusMatch = query.match(/What is (\d+) minus (\d+)/);
+  if (MinusMatch) {
+    const x: number = parseInt(MinusMatch[1]);
+    const y: number = parseInt(MinusMatch[2]);
+    return (x-y).toString();
+  }
+
   return "";
 }
